@@ -5,7 +5,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { CardActionArea, Divider, Grid, TextField } from "@material-ui/core";
+import { AppBar, CardActionArea, Divider, Grid, TextField, Toolbar } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -43,10 +43,15 @@ var cowData = {
   "Animal Number": "118",
   "Robot": "101",
   "Lactation No": "2",
-  "Lactationd Days": "228",
+  "Lactation Days": "228",
   "Interval Exceeded": "197.2",
   "Away": "21:20",
-  "Milk Yield Expected": "20.4"
+  "Milk Yield Expected": "20.4",
+  "Lactation No2": "2",
+  "Lactation Days2": "228",
+  "Interval Exceeded2": "197.2",
+  "Away2": "21:20",
+  "Milk Yield Expected2": "20.4"
 }
 
 var CowCard = (props) => {
@@ -59,23 +64,8 @@ var CowCard = (props) => {
   return (
     <Card variant="outlined">
       <CardActionArea onClick={() => setExpanded(!expanded)}>
-        <CardContent>
-          <Typography variant="h5"
-            color="textPrimary"
-            gutterBottom
-          >
-            {props.data[mainItem]}
-          </Typography>
-          <Divider></Divider>
-          <Grid container spacing={2}>
-            {list.map(ele =>
-              <Grid item xs={4} xm={3}>
-                <Data label={ele} data={props.data[ele]}></Data>
-              </Grid>
-            )}
-          </Grid>
-
-        </CardContent>
+        {expanded && <FullCowCard data={props.data}></FullCowCard>}
+        {!expanded && <SlimCowCard data={props.data}></SlimCowCard>}
       </CardActionArea>
     </Card>
   )
@@ -84,24 +74,24 @@ var CowCard = (props) => {
 var FullCowCard = (props) => {
   var list = Object.keys(props.data)
   var mainItem = list[0]
-  list = list.slice(1, 4)
+  list = list.slice(1, list.length)
 
   return (
     <CardContent>
       <Typography variant="h5"
-            color="textPrimary"
-            gutterBottom
-          >
-            {props.data[mainItem]}
-          </Typography>
-          <Divider></Divider>
-          <Grid container spacing={2}>
-            {list.map(ele =>
-              <Grid item xs={4} xm={3}>
-                <Data label={ele} data={props.data[ele]}></Data>
-              </Grid>
-            )}
+        color="textPrimary"
+        gutterBottom
+      >
+        {props.data[mainItem]}
+      </Typography>
+      <Divider></Divider>
+      <Grid container spacing={2}>
+        {list.map(ele =>
+          <Grid item xs={4} xm={3}>
+            <Data label={ele} data={props.data[ele]}></Data>
           </Grid>
+        )}
+      </Grid>
     </CardContent>
   )
 }
@@ -113,8 +103,8 @@ var SlimCowCard = (props) => {
 
   return (
     <CardContent>
-      <Grid container>
-        <Grid item xs={3}>
+      <Grid container alignItems="center" justify="space-between" spacing={1}>
+        <Grid item>
           <Typography variant="h5"
             color="textPrimary"
             gutterBottom>
@@ -122,7 +112,7 @@ var SlimCowCard = (props) => {
           </Typography>
         </Grid>
         {list.map(ele =>
-          <Grid item xs={3}>
+          <Grid item>
             <Data label={ele} data={props.data[ele]}></Data>
           </Grid>
         )}
@@ -138,7 +128,12 @@ export default function App() {
 
 
   return (
-    <div>
+    <div className={{ flexGrow: "1" }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h4">Cow List</Typography>
+        </Toolbar>
+      </AppBar>
       <Grid container spacing={1}>
         <Grid item xs={12}>
           <CowCard data={cowData}></CowCard>
