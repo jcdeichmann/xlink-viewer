@@ -62,12 +62,14 @@ var CowCard = (props) => {
 
 
   return (
-    <Card variant="elevation">
-      <CardActionArea onClick={() => setExpanded(!expanded)}>
-        {expanded && <FullCowCard data={props.data}></FullCowCard>}
-        {!expanded && <SlimCowCard data={props.data}></SlimCowCard>}
-      </CardActionArea>
-    </Card>
+    <Box px={2}>
+      <Card variant="elevation">
+        <CardActionArea onClick={() => setExpanded(!expanded)}>
+          {expanded && <FullCowCard data={props.data}></FullCowCard>}
+          {!expanded && <SlimCowCard data={props.data}></SlimCowCard>}
+        </CardActionArea>
+      </Card>
+    </Box>
   )
 }
 
@@ -129,27 +131,27 @@ export default function App() {
 
   return (
     <div className={{ flexGrow: "2" }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h4">Cow List</Typography>
-        </Toolbar>
-      </AppBar>
-      <Box mt={1}>
-        <Grid container justify="center" spacing={1}>
-          <Grid item xs={11}>
-            <CowCard data={cowData}></CowCard>
-          </Grid>
-          <Grid item xs={11}>
-            <CowCard data={cowData}></CowCard>
-          </Grid>
-          <Grid item xs={11}>
-            <CowCard data={cowData}></CowCard>
-          </Grid>
-          <Grid item xs={11}>
-            <CowCard data={cowData}></CowCard>
-          </Grid>
-        </Grid>
+      <Box mb={1}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h4">Cow List</Typography>
+          </Toolbar>
+        </AppBar>
       </Box>
+      <Grid container justify="center" spacing={1}>
+        <Grid item xs={12}>
+          <CowCard data={cowData}></CowCard>
+        </Grid>
+        <Grid item xs={12}>
+          <CowCard data={cowData}></CowCard>
+        </Grid>
+        <Grid item xs={12}>
+          <CowCard data={cowData}></CowCard>
+        </Grid>
+        <Grid item xs={12}>
+          <CowCard data={cowData}></CowCard>
+        </Grid>
+      </Grid>
 
     </div>
 
