@@ -5,7 +5,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { AppBar, Box, CardActionArea, Divider, Grid, TextField, Toolbar } from "@material-ui/core";
+import { createMuiTheme, AppBar, Box, CardActionArea, Chip, Divider, Grid, TextField, Toolbar, ThemeProvider } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -80,13 +80,12 @@ var FullCowCard = (props) => {
 
   return (
     <CardContent>
-      <Typography variant="h5"
-        color="textPrimary"
-        gutterBottom
-      >
-        {props.data[mainItem]}
-      </Typography>
-      <Divider></Divider>
+      <Grid item>
+        <Chip color="primary" label={props.data[mainItem]}></Chip>
+      </Grid>
+      <Box mt={1}>
+        <Divider></Divider>
+      </Box>
       <Grid container spacing={2}>
         {list.map(ele =>
           <Grid item xs={4} xm={3}>
@@ -107,11 +106,7 @@ var SlimCowCard = (props) => {
     <CardContent>
       <Grid container alignItems="center" justify="space-between" spacing={2}>
         <Grid item>
-          <Typography variant="h5"
-            color="textPrimary"
-            gutterBottom>
-            {props.data[mainItem]}
-          </Typography>
+          <Chip color="primary" label={props.data[mainItem]}></Chip>
         </Grid>
         {list.map(ele =>
           <Grid item>
@@ -123,6 +118,17 @@ var SlimCowCard = (props) => {
   )
 }
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#006400"
+    },
+    secondary: {
+      main: "#ffa500"
+    }
+  }
+});
+
 export default function App() {
   // Object.keys(cowData).forEach(key =>
   //   console.log(key)
@@ -130,30 +136,32 @@ export default function App() {
 
 
   return (
-    <div className={{ flexGrow: "2" }}>
-      <Box mb={1}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h4">Cow List</Typography>
-          </Toolbar>
-        </AppBar>
-      </Box>
-      <Grid container justify="center" spacing={1}>
-        <Grid item xs={12}>
-          <CowCard data={cowData}></CowCard>
+    <ThemeProvider>
+      <div className={{ flexGrow: "2" }}>
+        <Box mb={1}>
+          <AppBar position="static">
+            <Toolbar>
+              <Typography variant="h4">Cow List</Typography>
+            </Toolbar>
+          </AppBar>
+        </Box>
+        <Grid container justify="center" spacing={1}>
+          <Grid item xs={12}>
+            <CowCard data={cowData}></CowCard>
+          </Grid>
+          <Grid item xs={12}>
+            <CowCard data={cowData}></CowCard>
+          </Grid>
+          <Grid item xs={12}>
+            <CowCard data={cowData}></CowCard>
+          </Grid>
+          <Grid item xs={12}>
+            <CowCard data={cowData}></CowCard>
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <CowCard data={cowData}></CowCard>
-        </Grid>
-        <Grid item xs={12}>
-          <CowCard data={cowData}></CowCard>
-        </Grid>
-        <Grid item xs={12}>
-          <CowCard data={cowData}></CowCard>
-        </Grid>
-      </Grid>
 
-    </div>
+      </div>
+    </ThemeProvider>
 
   );
 }
