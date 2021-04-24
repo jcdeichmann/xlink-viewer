@@ -5,7 +5,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { AppBar, CardActionArea, Divider, Grid, TextField, Toolbar } from "@material-ui/core";
+import { AppBar, Box, CardActionArea, Divider, Grid, TextField, Toolbar } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -62,7 +62,7 @@ var CowCard = (props) => {
 
 
   return (
-    <Card variant="outlined">
+    <Card variant="elevation">
       <CardActionArea onClick={() => setExpanded(!expanded)}>
         {expanded && <FullCowCard data={props.data}></FullCowCard>}
         {!expanded && <SlimCowCard data={props.data}></SlimCowCard>}
@@ -103,7 +103,7 @@ var SlimCowCard = (props) => {
 
   return (
     <CardContent>
-      <Grid container alignItems="center" justify="space-between" spacing={1}>
+      <Grid container alignItems="center" justify="space-between" spacing={2}>
         <Grid item>
           <Typography variant="h5"
             color="textPrimary"
@@ -128,26 +128,28 @@ export default function App() {
 
 
   return (
-    <div className={{ flexGrow: "1" }}>
+    <div className={{ flexGrow: "2" }}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h4">Cow List</Typography>
         </Toolbar>
       </AppBar>
-      <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <CowCard data={cowData}></CowCard>
+      <Box mt={1}>
+        <Grid container justify="center" spacing={1}>
+          <Grid item xs={11}>
+            <CowCard data={cowData}></CowCard>
+          </Grid>
+          <Grid item xs={11}>
+            <CowCard data={cowData}></CowCard>
+          </Grid>
+          <Grid item xs={11}>
+            <CowCard data={cowData}></CowCard>
+          </Grid>
+          <Grid item xs={11}>
+            <CowCard data={cowData}></CowCard>
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <CowCard data={cowData}></CowCard>
-        </Grid>
-        <Grid item xs={12}>
-          <CowCard data={cowData}></CowCard>
-        </Grid>
-        <Grid item xs={12}>
-          <CowCard data={cowData}></CowCard>
-        </Grid>
-      </Grid>
+      </Box>
 
     </div>
 
