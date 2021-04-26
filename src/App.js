@@ -5,7 +5,8 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { createMuiTheme, AppBar, Box, CardActionArea, Chip, Divider, Grid, TextField, Toolbar, ThemeProvider } from "@material-ui/core";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { createMuiTheme, AppBar, Box, CardActionArea, Chip, Divider, Grid, TextField, Toolbar, ThemeProvider, Icon } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -114,6 +115,9 @@ var SlimCowCard = (props) => {
           </Grid>
         )}
       </Grid>
+      <Box justifyContent="flex-end" display="flex">
+        <ExpandMoreIcon color="action"></ExpandMoreIcon>
+      </Box>
     </CardContent>
   )
 }
