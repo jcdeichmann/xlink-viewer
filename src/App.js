@@ -105,18 +105,20 @@ var SlimCowCard = (props) => {
 
   return (
     <CardContent>
-      <Grid container alignItems="center" justify="space-between" spacing={2}>
-        <Grid item>
-          <Chip color="primary" label={props.data[mainItem]}></Chip>
-        </Grid>
-        {list.map(ele =>
+      <Box display="flex">
+        <Grid container alignItems="center" justify="space-between" spacing={2}>
           <Grid item>
-            <Data label={ele} data={props.data[ele]}></Data>
+            <Chip color="primary" label={props.data[mainItem]}></Chip>
           </Grid>
-        )}
-      </Grid>
-      <Box justifyContent="flex-end" display="flex">
-        <ExpandMoreIcon color="action"></ExpandMoreIcon>
+          {list.map(ele =>
+            <Grid item>
+              <Data label={ele} data={props.data[ele]}></Data>
+            </Grid>
+          )}
+        </Grid>
+        <Box display="flex">
+        <ExpandMoreIcon color="action" classes={{alignSelf:"flex-end"}}></ExpandMoreIcon>
+        </Box>
       </Box>
     </CardContent>
   )
