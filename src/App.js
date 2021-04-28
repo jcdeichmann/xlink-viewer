@@ -6,7 +6,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { createMuiTheme, AppBar, Box, CardActionArea, Chip, Divider, Grid, TextField, Toolbar, ThemeProvider, Icon, Accordion, AccordionSummary, AccordionDetails } from "@material-ui/core";
+import { createMuiTheme, AppBar, Box, CardActionArea, Chip, Divider, Grid, TextField, Toolbar, ThemeProvider, Icon, Accordion, AccordionSummary, AccordionDetails, IconButton } from "@material-ui/core";
+import { ArrowBackIos } from "@material-ui/icons";
 
 const useStyles = makeStyles({
   root: {
@@ -47,6 +48,21 @@ var cowData = {
   "Lactation Days": "228",
   "Interval Exceeded": "197.2",
   "Away": "21:20",
+  "Milk Yield Expected": "20.4",
+  "Lactation No2": "2",
+  "Lactation Days2": "228",
+  "Interval Exceeded2": "197.2",
+  "Away2": "21:20",
+  "Milk Yield Expected2": "20.4"
+}
+
+var cowData2 = {
+  "Animal Number": "24",
+  "Robot": "101",
+  "Lactation No": "2",
+  "Lactation Days": "34",
+  "Interval Exceeded": "17.2",
+  "Away": "8:20",
   "Milk Yield Expected": "20.4",
   "Lactation No2": "2",
   "Lactation Days2": "228",
@@ -127,10 +143,10 @@ var SlimCowCard = (props) => {
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#006400"
+      main: "#c30a13"
     },
     secondary: {
-      main: "#ffa500"
+      main: "#0ac3ba"
     }
   }
 });
@@ -151,7 +167,7 @@ var AccordianCowCard = (props) => {
         >
           <Grid container justify="space-around" spacing={1}>
             <Grid item>
-            <Chip color="primary" label={props.data[mainItem]}></Chip>
+              <Chip color="primary" label={props.data[mainItem]}></Chip>
             </Grid>
 
             {toplist.map(ele =>
@@ -235,12 +251,15 @@ export default function App() {
 
 
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       <div className={{ flexGrow: "2" }}>
         <Box mb={1}>
           <AppBar position="static">
             <Toolbar>
-              <Typography variant="h4">Cow List</Typography>
+              <IconButton  style={{color:"white"}} edge="start">
+                <ArrowBackIos ></ArrowBackIos>
+              </IconButton>
+              <Typography >Xlink Mobile</Typography>
             </Toolbar>
           </AppBar>
         </Box>
@@ -258,7 +277,7 @@ export default function App() {
             <AccordianCowCard data={cowData}></AccordianCowCard>
           </Grid>
           <Grid item xs={12}>
-            <AccordianCowCard data={cowData}></AccordianCowCard>
+            <AccordianCowCard data={cowData2}></AccordianCowCard>
           </Grid>
           <Grid item xs={12}>
             <AccordianCowCard data={cowData}></AccordianCowCard>
