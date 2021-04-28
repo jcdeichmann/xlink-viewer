@@ -6,7 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { createMuiTheme, AppBar, Box, CardActionArea, Chip, Divider, Grid, TextField, Toolbar, ThemeProvider, Icon } from "@material-ui/core";
+import { createMuiTheme, AppBar, Box, CardActionArea, Chip, Divider, Grid, TextField, Toolbar, ThemeProvider, Icon, Accordion, AccordionSummary, AccordionDetails } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -117,7 +117,7 @@ var SlimCowCard = (props) => {
           )}
         </Grid>
         <Box display="flex">
-        <ExpandMoreIcon color="action" classes={{alignSelf:"flex-end"}}></ExpandMoreIcon>
+          <ExpandMoreIcon color="action" classes={{ alignSelf: "flex-end" }}></ExpandMoreIcon>
         </Box>
       </Box>
     </CardContent>
@@ -135,6 +135,99 @@ const theme = createMuiTheme({
   }
 });
 
+var AccordianCowCard = (props) => {
+  var list = Object.keys(props.data)
+  var mainItem = list[0]
+  var toplist = list.slice(1, 4)
+  var botlist = list.slice(4)
+
+  return (
+    <div>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+        >
+          <Grid container justify="space-around" spacing={1}>
+            <Grid item>
+            <Chip color="primary" label={props.data[mainItem]}></Chip>
+            </Grid>
+
+            {toplist.map(ele =>
+              <Grid item>
+                <Data label={ele} data={props.data[ele]}></Data>
+              </Grid>
+            )}
+          </Grid>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Grid container spacing={1}>
+            {botlist.map(ele =>
+              <Grid item xs={4} xm={3}>
+                <Data label={ele} data={props.data[ele]}></Data>
+              </Grid>
+            )}
+          </Grid>
+        </AccordionDetails>
+      </Accordion>
+    </div>
+  )
+}
+
+var FullAccCowCard = (props) => {
+  var list = Object.keys(props.data)
+  var mainItem = list[0]
+  list = list.slice(1, list.length)
+
+  return (
+    <div>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+        >
+          <Typography>{props.data[mainItem]}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          {list.map(ele =>
+            <Grid item xs={4} xm={3}>
+              <Data label={ele} data={props.data[ele]}></Data>
+            </Grid>
+          )}
+        </AccordionDetails>
+      </Accordion>
+    </div>
+  )
+}
+
+var SlimAccCowCard = (props) => {
+  var list = Object.keys(props.data)
+  var mainItem = list[0]
+  list = list.slice(1, 4)
+
+  return (
+    <CardContent>
+      <Box display="flex">
+        <Grid container alignItems="center" justify="space-between" spacing={2}>
+          <Grid item>
+            <Chip color="primary" label={props.data[mainItem]}></Chip>
+          </Grid>
+          {list.map(ele =>
+            <Grid item>
+              <Data label={ele} data={props.data[ele]}></Data>
+            </Grid>
+          )}
+        </Grid>
+        <Box display="flex">
+          <ExpandMoreIcon color="action" classes={{ alignSelf: "flex-end" }}></ExpandMoreIcon>
+        </Box>
+      </Box>
+    </CardContent>
+  )
+}
+
 export default function App() {
   // Object.keys(cowData).forEach(key =>
   //   console.log(key)
@@ -151,8 +244,8 @@ export default function App() {
             </Toolbar>
           </AppBar>
         </Box>
-        <Grid container justify="center" spacing={1}>
-          <Grid item xs={12}>
+        <Grid container justify="center">
+          {/* <Grid item xs={12}>
             <CowCard data={cowData}></CowCard>
           </Grid>
           <Grid item xs={12}>
@@ -160,9 +253,24 @@ export default function App() {
           </Grid>
           <Grid item xs={12}>
             <CowCard data={cowData}></CowCard>
+          </Grid> */}
+          <Grid item xs={12}>
+            <AccordianCowCard data={cowData}></AccordianCowCard>
           </Grid>
           <Grid item xs={12}>
-            <CowCard data={cowData}></CowCard>
+            <AccordianCowCard data={cowData}></AccordianCowCard>
+          </Grid>
+          <Grid item xs={12}>
+            <AccordianCowCard data={cowData}></AccordianCowCard>
+          </Grid>
+          <Grid item xs={12}>
+            <AccordianCowCard data={cowData}></AccordianCowCard>
+          </Grid>
+          <Grid item xs={12}>
+            <AccordianCowCard data={cowData}></AccordianCowCard>
+          </Grid>
+          <Grid item xs={12}>
+            <AccordianCowCard data={cowData}></AccordianCowCard>
           </Grid>
         </Grid>
 
