@@ -158,7 +158,6 @@ var AccordianCowCard = (props) => {
   var botlist = list.slice(4)
 
   return (
-    <div>
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -187,7 +186,6 @@ var AccordianCowCard = (props) => {
           </Grid>
         </AccordionDetails>
       </Accordion>
-    </div>
   )
 }
 
@@ -256,42 +254,21 @@ export default function App() {
         <Box mb={1}>
           <AppBar position="static">
             <Toolbar>
-              <IconButton  style={{color:"white"}} edge="start">
+              <IconButton style={{ color: "white" }} edge="start">
                 <ArrowBackIos ></ArrowBackIos>
               </IconButton>
               <Typography >Xlink Mobile</Typography>
             </Toolbar>
           </AppBar>
         </Box>
-        <Grid container justify="center">
-          {/* <Grid item xs={12}>
-            <CowCard data={cowData}></CowCard>
-          </Grid>
-          <Grid item xs={12}>
-            <CowCard data={cowData}></CowCard>
-          </Grid>
-          <Grid item xs={12}>
-            <CowCard data={cowData}></CowCard>
-          </Grid> */}
-          <Grid item xs={12}>
-            <AccordianCowCard data={cowData}></AccordianCowCard>
-          </Grid>
-          <Grid item xs={12}>
-            <AccordianCowCard data={cowData2}></AccordianCowCard>
-          </Grid>
-          <Grid item xs={12}>
-            <AccordianCowCard data={cowData}></AccordianCowCard>
-          </Grid>
-          <Grid item xs={12}>
-            <AccordianCowCard data={cowData}></AccordianCowCard>
-          </Grid>
-          <Grid item xs={12}>
-            <AccordianCowCard data={cowData}></AccordianCowCard>
-          </Grid>
-          <Grid item xs={12}>
-            <AccordianCowCard data={cowData}></AccordianCowCard>
-          </Grid>
-        </Grid>
+
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData2}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+
+        <AccordianCowCard data={cowData}></AccordianCowCard>
 
       </div>
     </ThemeProvider>
