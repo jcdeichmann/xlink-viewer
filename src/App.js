@@ -6,7 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { createMuiTheme, AppBar, Box, CardActionArea, Chip, Divider, Grid, TextField, Toolbar, ThemeProvider, Icon, Accordion, AccordionSummary, AccordionDetails, IconButton } from "@material-ui/core";
+import { createMuiTheme, AppBar, Box, CardActionArea, Chip, Divider, Grid, TextField, Toolbar, ThemeProvider, Icon, Accordion, AccordionSummary, AccordionDetails, IconButton, CssBaseline } from "@material-ui/core";
 import { ArrowBackIos } from "@material-ui/icons";
 
 const useStyles = makeStyles({
@@ -145,6 +145,10 @@ const theme = createMuiTheme({
     primary: {
       main: "#c30a13"
     },
+    background: {
+      default: "#c30a13",
+      body: "#c30a13"
+    },
     secondary: {
       main: "#0ac3ba"
     }
@@ -158,34 +162,34 @@ var AccordianCowCard = (props) => {
   var botlist = list.slice(4)
 
   return (
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1bh-content"
-          id="panel1bh-header"
-        >
-          <Grid container justify="space-around" spacing={1}>
-            <Grid item>
-              <Chip color="primary" label={props.data[mainItem]}></Chip>
-            </Grid>
+    <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1bh-content"
+        id="panel1bh-header"
+      >
+        <Grid container justify="space-around" spacing={1}>
+          <Grid item>
+            <Chip color="primary" label={props.data[mainItem]}></Chip>
+          </Grid>
 
-            {toplist.map(ele =>
-              <Grid item>
-                <Data label={ele} data={props.data[ele]}></Data>
-              </Grid>
-            )}
-          </Grid>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Grid container spacing={1}>
-            {botlist.map(ele =>
-              <Grid item xs={4} xm={3}>
-                <Data label={ele} data={props.data[ele]}></Data>
-              </Grid>
-            )}
-          </Grid>
-        </AccordionDetails>
-      </Accordion>
+          {toplist.map(ele =>
+            <Grid item>
+              <Data label={ele} data={props.data[ele]}></Data>
+            </Grid>
+          )}
+        </Grid>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Grid container spacing={1}>
+          {botlist.map(ele =>
+            <Grid item xs={4} xm={3}>
+              <Data label={ele} data={props.data[ele]}></Data>
+            </Grid>
+          )}
+        </Grid>
+      </AccordionDetails>
+    </Accordion>
   )
 }
 
@@ -250,16 +254,18 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className={{ flexGrow: "2" }}>
-        <Box mb={1}>
-          <AppBar position="static">
-            <Toolbar>
-              <IconButton style={{ color: "white" }} edge="start">
-                <ArrowBackIos ></ArrowBackIos>
-              </IconButton>
-              <Typography >Xlink Mobile</Typography>
-            </Toolbar>
-          </AppBar>
+      <CssBaseline></CssBaseline>
+      <React.Fragment bgColor="red" className={{ flexGrow: "2" }}>
+        <AppBar position="sticky">
+          <Toolbar>
+            <IconButton style={{ color: "white" }} edge="start">
+              <ArrowBackIos ></ArrowBackIos>
+            </IconButton>
+            <Typography >Xlink Mobile</Typography>
+          </Toolbar>
+        </AppBar>
+        <Box bgcolor="white" p={2}>
+          <Typography variant="h4" >Collect Cows</Typography>
         </Box>
 
         <AccordianCowCard data={cowData}></AccordianCowCard>
@@ -267,10 +273,21 @@ export default function App() {
         <AccordianCowCard data={cowData}></AccordianCowCard>
         <AccordianCowCard data={cowData}></AccordianCowCard>
         <AccordianCowCard data={cowData}></AccordianCowCard>
-
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData2}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData2}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
         <AccordianCowCard data={cowData}></AccordianCowCard>
 
-      </div>
+      </React.Fragment>
     </ThemeProvider>
 
   );
