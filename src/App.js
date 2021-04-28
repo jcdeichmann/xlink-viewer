@@ -255,40 +255,48 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline></CssBaseline>
-      <React.Fragment bgColor="red" className={{ flexGrow: "2" }}>
-        <AppBar position="sticky">
-          <Toolbar>
-            <IconButton style={{ color: "white" }} edge="start">
-              <ArrowBackIos ></ArrowBackIos>
-            </IconButton>
-            <Typography >Xlink Mobile</Typography>
-          </Toolbar>
-        </AppBar>
-        <Box bgcolor="white" p={2}>
-          <Typography variant="h4" >Collect Cows</Typography>
-        </Box>
-
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData2}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData2}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData2}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-
+      <Box className="testing" style={{
+          position: "fixed",
+          width: "100%",
+          height: "300px",
+          top: "-250px",
+          zIndex: "10",
+          backgroundColor: "#c30a13"}} ></Box>
+      <React.Fragment className={{ flexGrow: "2" }}>
+      <AppBar position="sticky" style={{clipPath: "inset(0px -10px -10px -10px)"}}>
+        <Toolbar>
+          <IconButton style={{ color: "white" }} edge="start">
+            <ArrowBackIos ></ArrowBackIos>
+          </IconButton>
+          <Typography variant="h6">Xlink Mobile</Typography>
+        </Toolbar>
+      </AppBar>
+      <Box bgcolor="white">
+      <Box p={2}>
+        <Typography variant="h4" >Collect Cows</Typography>
+      </Box>
+    
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData2}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData2}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData2}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      <AccordianCowCard data={cowData}></AccordianCowCard>
+      </Box>
       </React.Fragment>
-    </ThemeProvider>
+    </ThemeProvider >
 
   );
 }
