@@ -73,7 +73,7 @@ const theme = createMuiTheme({
   }
 });
 
-const CollectCowsReport = () => {
+const NavBar = () => {
   return (
     <React.Fragment>
       <Box className="testing" style={{
@@ -84,15 +84,23 @@ const CollectCowsReport = () => {
         zIndex: "10",
         backgroundColor: "#c30a13"
       }} ></Box>
+      <AppBar position="sticky" style={{ clipPath: "inset(0px -10px -10px -10px)" }}>
+        <Toolbar>
+          <IconButton style={{ color: "white" }} edge="start">
+            <ArrowBackIos ></ArrowBackIos>
+          </IconButton>
+          <Typography variant="h6">Xlink Mobile</Typography>
+        </Toolbar>
+      </AppBar>
+    </React.Fragment>
+  )
+}
+
+const CollectCowsReport = () => {
+  return (
+    <React.Fragment>
+      <NavBar></NavBar>
       <React.Fragment className={{ flexGrow: "2" }}>
-        <AppBar position="sticky" style={{ clipPath: "inset(0px -10px -10px -10px)" }}>
-          <Toolbar>
-            <IconButton style={{ color: "white" }} edge="start">
-              <ArrowBackIos ></ArrowBackIos>
-            </IconButton>
-            <Typography variant="h6">Xlink Mobile</Typography>
-          </Toolbar>
-        </AppBar>
         <Box bgcolor="white">
           <Box p={2}>
             <Typography variant="h4" >Collect Cows</Typography>
@@ -118,7 +126,7 @@ const CollectCowsReport = () => {
           <AccordianCowCard data={cowData}></AccordianCowCard>
         </Box>
       </React.Fragment>
-      </React.Fragment>
+    </React.Fragment>
   )
 }
 
@@ -130,16 +138,16 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline></CssBaseline>
-    <Router>
-      <Switch>
-        <Route path="/xlink-viewer/collect-cows">
-          <CollectCowsReport></CollectCowsReport>
-        </Route>
-        <Route path="/xlink-viewer">
-          <Home></Home>
-        </Route>
-      </Switch>
-    </Router>
+      <Router>
+        <Switch>
+          <Route path="/xlink-viewer/collect-cows">
+            <CollectCowsReport></CollectCowsReport>
+          </Route>
+          <Route path="/xlink-viewer">
+            <Home></Home>
+          </Route>
+        </Switch>
+      </Router>
     </ThemeProvider >
   );
 }
