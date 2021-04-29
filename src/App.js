@@ -95,40 +95,44 @@ const NavBar = (props) => {
   )
 }
 
-const CollectCowsReport = () => {
+const Report = (props) => {
   const BackButton = (
-  <IconButton style={{ color: "white" }} edge="start" href="#">
-    <ArrowBackIos ></ArrowBackIos>
-  </IconButton>)
-
-  return (
-    <React.Fragment>
-      <NavBar button={BackButton}></NavBar>
-      <Box bgcolor="white">
-        <Box p={2}>
-          <Typography variant="h4" >Collect Cows</Typography>
+    <IconButton style={{ color: "white" }} edge="start" href="#">
+      <ArrowBackIos ></ArrowBackIos>
+    </IconButton>)
+  
+    return (
+      <React.Fragment>
+        <NavBar button={BackButton}></NavBar>
+        <Box bgcolor="white">
+          <Box p={2}>
+            <Typography variant="h4">{props.reportName}</Typography>
+          </Box>
+          {props.data.map(row => <AccordianCowCard data={cowData}></AccordianCowCard>)}
         </Box>
+      </React.Fragment>
+    )
+}
 
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData2}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData2}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData2}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-        <AccordianCowCard data={cowData}></AccordianCowCard>
-      </Box>
-    </React.Fragment>
+const CollectCowsReport = () => {
+  var data = [
+    cowData,
+    cowData2,
+    cowData,
+    cowData2,
+    cowData,
+    cowData2,
+    cowData,
+    cowData2,
+    cowData,
+    cowData2,
+    cowData,
+    cowData2,
+    cowData,
+    cowData2
+  ]
+  return (
+   <Report reportName="Collect Cows" data={data}></Report>
   )
 }
 
