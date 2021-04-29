@@ -108,7 +108,7 @@ const Report = (props) => {
           <Box p={2}>
             <Typography variant="h4">{props.reportName}</Typography>
           </Box>
-          {props.data.map(row => <AccordianCowCard data={cowData}></AccordianCowCard>)}
+          {props.data.map(row => <AccordianCowCard data={row}></AccordianCowCard>)}
         </Box>
       </React.Fragment>
     )
