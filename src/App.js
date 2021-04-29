@@ -1,9 +1,15 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { createMuiTheme, AppBar, Box, CardActionArea, Divider, TextField, Toolbar, ThemeProvider, Icon, IconButton, CssBaseline } from "@material-ui/core";
 import { ArrowBackIos } from "@material-ui/icons";
 import { AccordianCowCard } from "./components/AccordianCowCard";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -67,52 +73,73 @@ const theme = createMuiTheme({
   }
 });
 
+const CollectCowsReport = () => {
+  return (
+    <React.Fragment>
+      <Box className="testing" style={{
+        position: "fixed",
+        width: "100%",
+        height: "300px",
+        top: "-250px",
+        zIndex: "10",
+        backgroundColor: "#c30a13"
+      }} ></Box>
+      <React.Fragment className={{ flexGrow: "2" }}>
+        <AppBar position="sticky" style={{ clipPath: "inset(0px -10px -10px -10px)" }}>
+          <Toolbar>
+            <IconButton style={{ color: "white" }} edge="start">
+              <ArrowBackIos ></ArrowBackIos>
+            </IconButton>
+            <Typography variant="h6">Xlink Mobile</Typography>
+          </Toolbar>
+        </AppBar>
+        <Box bgcolor="white">
+          <Box p={2}>
+            <Typography variant="h4" >Collect Cows</Typography>
+          </Box>
+
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData2}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData2}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData2}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+          <AccordianCowCard data={cowData}></AccordianCowCard>
+        </Box>
+      </React.Fragment>
+      </React.Fragment>
+  )
+}
+
+const Home = () => {
+  return (<Typography>Home</Typography>)
+}
+
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline></CssBaseline>
-      <Box className="testing" style={{
-          position: "fixed",
-          width: "100%",
-          height: "300px",
-          top: "-250px",
-          zIndex: "10",
-          backgroundColor: "#c30a13"}} ></Box>
-      <React.Fragment className={{ flexGrow: "2" }}>
-      <AppBar position="sticky" style={{clipPath: "inset(0px -10px -10px -10px)"}}>
-        <Toolbar>
-          <IconButton style={{ color: "white" }} edge="start">
-            <ArrowBackIos ></ArrowBackIos>
-          </IconButton>
-          <Typography variant="h6">Xlink Mobile</Typography>
-        </Toolbar>
-      </AppBar>
-      <Box bgcolor="white">
-      <Box p={2}>
-        <Typography variant="h4" >Collect Cows</Typography>
-      </Box>
-    
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData2}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData2}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData2}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      <AccordianCowCard data={cowData}></AccordianCowCard>
-      </Box>
-      </React.Fragment>
+    <Router>
+      <Switch>
+        <Route path="/xlink-viewer/collect-cows">
+          <CollectCowsReport></CollectCowsReport>
+        </Route>
+        <Route path="/xlink-viewer">
+          <Home></Home>
+        </Route>
+      </Switch>
+    </Router>
     </ThemeProvider >
-
   );
 }
