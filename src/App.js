@@ -1,9 +1,5 @@
 import React, { Component, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { createMuiTheme, AppBar, Box, CardActionArea, Chip, Divider, Grid, TextField, Toolbar, ThemeProvider, Icon, Accordion, AccordionSummary, AccordionDetails, IconButton, CssBaseline } from "@material-ui/core";
@@ -71,75 +67,6 @@ var cowData2 = {
   "Milk Yield Expected2": "20.4"
 }
 
-var CowCard = (props) => {
-  const [expanded, setExpanded] = useState(false)
-  var list = Object.keys(props.data)
-  var mainItem = list[0]
-  list = list.slice(1, expanded ? list.length : 4)
-
-
-  return (
-    <Box px={2}>
-      <Card variant="elevation">
-        <CardActionArea onClick={() => setExpanded(!expanded)}>
-          {expanded && <FullCowCard data={props.data}></FullCowCard>}
-          {!expanded && <SlimCowCard data={props.data}></SlimCowCard>}
-        </CardActionArea>
-      </Card>
-    </Box>
-  )
-}
-
-var FullCowCard = (props) => {
-  var list = Object.keys(props.data)
-  var mainItem = list[0]
-  list = list.slice(1, list.length)
-
-  return (
-    <CardContent>
-      <Grid item>
-        <Chip color="primary" label={props.data[mainItem]}></Chip>
-      </Grid>
-      <Box mt={1}>
-        <Divider></Divider>
-      </Box>
-      <Grid container spacing={2}>
-        {list.map(ele =>
-          <Grid item xs={4} xm={3}>
-            <Data label={ele} data={props.data[ele]}></Data>
-          </Grid>
-        )}
-      </Grid>
-    </CardContent>
-  )
-}
-
-var SlimCowCard = (props) => {
-  var list = Object.keys(props.data)
-  var mainItem = list[0]
-  list = list.slice(1, 4)
-
-  return (
-    <CardContent>
-      <Box display="flex">
-        <Grid container alignItems="center" justify="space-between" spacing={2}>
-          <Grid item>
-            <Chip color="primary" label={props.data[mainItem]}></Chip>
-          </Grid>
-          {list.map(ele =>
-            <Grid item>
-              <Data label={ele} data={props.data[ele]}></Data>
-            </Grid>
-          )}
-        </Grid>
-        <Box display="flex">
-          <ExpandMoreIcon color="action" classes={{ alignSelf: "flex-end" }}></ExpandMoreIcon>
-        </Box>
-      </Box>
-    </CardContent>
-  )
-}
-
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -193,65 +120,7 @@ var AccordianCowCard = (props) => {
   )
 }
 
-var FullAccCowCard = (props) => {
-  var list = Object.keys(props.data)
-  var mainItem = list[0]
-  list = list.slice(1, list.length)
-
-  return (
-    <div>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1bh-content"
-          id="panel1bh-header"
-        >
-          <Typography>{props.data[mainItem]}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          {list.map(ele =>
-            <Grid item xs={4} xm={3}>
-              <Data label={ele} data={props.data[ele]}></Data>
-            </Grid>
-          )}
-        </AccordionDetails>
-      </Accordion>
-    </div>
-  )
-}
-
-var SlimAccCowCard = (props) => {
-  var list = Object.keys(props.data)
-  var mainItem = list[0]
-  list = list.slice(1, 4)
-
-  return (
-    <CardContent>
-      <Box display="flex">
-        <Grid container alignItems="center" justify="space-between" spacing={2}>
-          <Grid item>
-            <Chip color="primary" label={props.data[mainItem]}></Chip>
-          </Grid>
-          {list.map(ele =>
-            <Grid item>
-              <Data label={ele} data={props.data[ele]}></Data>
-            </Grid>
-          )}
-        </Grid>
-        <Box display="flex">
-          <ExpandMoreIcon color="action" classes={{ alignSelf: "flex-end" }}></ExpandMoreIcon>
-        </Box>
-      </Box>
-    </CardContent>
-  )
-}
-
 export default function App() {
-  // Object.keys(cowData).forEach(key =>
-  //   console.log(key)
-  // )
-
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline></CssBaseline>
