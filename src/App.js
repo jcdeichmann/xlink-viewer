@@ -8,7 +8,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  HashRouter
 } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -95,7 +96,8 @@ const NavBar = (props) => {
 }
 
 const CollectCowsReport = () => {
-  const BackButton = (<IconButton style={{ color: "white" }} edge="start">
+  const BackButton = (
+  <IconButton style={{ color: "white" }} edge="start" href="#">
     <ArrowBackIos ></ArrowBackIos>
   </IconButton>)
 
@@ -132,31 +134,39 @@ const CollectCowsReport = () => {
 
 const Home = () => {
   return (
-  <React.Fragment>
-    <NavBar></NavBar>
-    <List>
-      <ListItem button component="a" href="xlink-viewer/collect-cows">
-        <ListItemText primary="Collect Cows"></ListItemText>
-      </ListItem>
-    </List>
+    <React.Fragment>
+      <Box bgcolor="white" width="100vw" height="100vh">
+      <NavBar></NavBar>
+      <Box p={2}>
+          <Typography variant="h4" >Report Lists</Typography>
+        </Box>
+        <List>
+          <ListItem divider button component="a" href="#/collect-cows">
+            <ListItemText primary="Collect Cows"></ListItemText>
+          </ListItem>
+          <ListItem divider button component="a" href="#/collect-cows">
+            <ListItemText primary="Health List"></ListItemText>
+          </ListItem>
+        </List>
+      </Box>
 
-  </React.Fragment>)
+    </React.Fragment>)
 }
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline></CssBaseline>
-      <Router>
+      <HashRouter basename="xlink-viewer">
         <Switch>
-          <Route path="/xlink-viewer/collect-cows">
+          <Route path="/collect-cows/">
             <CollectCowsReport></CollectCowsReport>
           </Route>
-          <Route path="/xlink-viewer">
+          <Route path="/">
             <Home></Home>
           </Route>
         </Switch>
-      </Router>
+      </HashRouter>
     </ThemeProvider >
   );
 }
