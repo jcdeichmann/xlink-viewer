@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { createMuiTheme, AppBar, Box, CardActionArea, Divider, TextField, Toolbar, ThemeProvider, Icon, IconButton, CssBaseline } from "@material-ui/core";
+import { createMuiTheme, AppBar, Box, CardActionArea, Divider, TextField, Toolbar, ThemeProvider, Icon, IconButton, CssBaseline, List, ListItem, ListItemText } from "@material-ui/core";
 import { ArrowBackIos } from "@material-ui/icons";
 import { AccordianCowCard } from "./components/AccordianCowCard";
 import {
@@ -73,7 +73,7 @@ const theme = createMuiTheme({
   }
 });
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <React.Fragment>
       <Box className="testing" style={{
@@ -86,9 +86,7 @@ const NavBar = () => {
       }} ></Box>
       <AppBar position="sticky" style={{ clipPath: "inset(0px -10px -10px -10px)" }}>
         <Toolbar>
-          <IconButton style={{ color: "white" }} edge="start">
-            <ArrowBackIos ></ArrowBackIos>
-          </IconButton>
+          {props.button}
           <Typography variant="h6">Xlink Mobile</Typography>
         </Toolbar>
       </AppBar>
@@ -97,9 +95,13 @@ const NavBar = () => {
 }
 
 const CollectCowsReport = () => {
+  const BackButton = (<IconButton style={{ color: "white" }} edge="start">
+    <ArrowBackIos ></ArrowBackIos>
+  </IconButton>)
+
   return (
     <React.Fragment>
-      <NavBar></NavBar>
+      <NavBar button={BackButton}></NavBar>
       <Box bgcolor="white">
         <Box p={2}>
           <Typography variant="h4" >Collect Cows</Typography>
@@ -129,7 +131,16 @@ const CollectCowsReport = () => {
 }
 
 const Home = () => {
-  return (<Typography>Home</Typography>)
+  return (
+  <React.Fragment>
+    <NavBar></NavBar>
+    <List>
+      <ListItem button component="a" href="xlink-viewer/collect-cows">
+        <ListItemText primary="Collect Cows"></ListItemText>
+      </ListItem>
+    </List>
+
+  </React.Fragment>)
 }
 
 export default function App() {
