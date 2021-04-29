@@ -100,32 +100,30 @@ const CollectCowsReport = () => {
   return (
     <React.Fragment>
       <NavBar></NavBar>
-      <React.Fragment className={{ flexGrow: "2" }}>
-        <Box bgcolor="white">
-          <Box p={2}>
-            <Typography variant="h4" >Collect Cows</Typography>
-          </Box>
-
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData2}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData2}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData2}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
-          <AccordianCowCard data={cowData}></AccordianCowCard>
+      <Box bgcolor="white">
+        <Box p={2}>
+          <Typography variant="h4" >Collect Cows</Typography>
         </Box>
-      </React.Fragment>
+
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData2}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData2}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData2}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+        <AccordianCowCard data={cowData}></AccordianCowCard>
+      </Box>
     </React.Fragment>
   )
 }
