@@ -1,9 +1,9 @@
 import React, { Component, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { createMuiTheme, AppBar, Box, CardActionArea, Chip, Divider, Grid, TextField, Toolbar, ThemeProvider, Icon, Accordion, AccordionSummary, AccordionDetails, IconButton, CssBaseline } from "@material-ui/core";
+import { createMuiTheme, AppBar, Box, CardActionArea, Divider, TextField, Toolbar, ThemeProvider, Icon, IconButton, CssBaseline } from "@material-ui/core";
 import { ArrowBackIos } from "@material-ui/icons";
+import { AccordianCowCard } from "./components/AccordianCowCard";
 
 const useStyles = makeStyles({
   root: {
@@ -21,21 +21,6 @@ const useStyles = makeStyles({
     marginBottom: 12
   }
 });
-
-class Data extends Component {
-  render() {
-    return (
-      <div>
-        <Typography variant="caption" color="textSecondary">
-          {this.props.label}
-        </Typography>
-        <Typography style={{ fontSize: 16 }} variant="body1">
-          {this.props.data}
-        </Typography>
-      </div>
-    );
-  }
-}
 
 var cowData = {
   "Animal Number": "118",
@@ -81,44 +66,6 @@ const theme = createMuiTheme({
     }
   }
 });
-
-var AccordianCowCard = (props) => {
-  var list = Object.keys(props.data)
-  var mainItem = list[0]
-  var toplist = list.slice(1, 4)
-  var botlist = list.slice(4)
-
-  return (
-    <Accordion>
-      <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        aria-controls="panel1bh-content"
-        id="panel1bh-header"
-      >
-        <Grid container justify="space-around" spacing={1}>
-          <Grid item>
-            <Chip color="primary" label={props.data[mainItem]}></Chip>
-          </Grid>
-
-          {toplist.map(ele =>
-            <Grid item>
-              <Data label={ele} data={props.data[ele]}></Data>
-            </Grid>
-          )}
-        </Grid>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Grid container spacing={1}>
-          {botlist.map(ele =>
-            <Grid item xs={4} xm={3}>
-              <Data label={ele} data={props.data[ele]}></Data>
-            </Grid>
-          )}
-        </Grid>
-      </AccordionDetails>
-    </Accordion>
-  )
-}
 
 export default function App() {
   return (
