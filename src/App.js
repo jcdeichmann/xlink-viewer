@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { createMuiTheme, AppBar, Box, CardActionArea, Divider, TextField, Toolbar, ThemeProvider, Icon, IconButton, CssBaseline, List, ListItem, ListItemText } from "@material-ui/core";
@@ -59,6 +59,39 @@ var cowData2 = {
   "Milk Yield Expected2": "20.4"
 }
 
+function prioritizeData(datas) {
+  console.log("datas: " + datas)
+  var priorityKeys = ["Animal Number", "Away", "Robot", "Interval Exceed"]
+
+  var sort = (x,y) => {
+      var xInd = priorityKeys.indexOf(x)
+      var yInd = priorityKeys.indexOf(y)
+
+      xInd = xInd == -1 ? 1000 : xInd
+      yInd = yInd == -1 ? 1000 : yInd
+
+      if (xInd < yInd) {
+        return -1
+      } else {
+        return 0
+      }
+    }
+
+  var ordered =  datas.map(function(data) {
+    return Object.keys(data).sort(sort).reduce(
+      (obj, key) => { 
+        obj[key] = data[key]; 
+        return obj;
+      }, 
+      {}
+    )
+  })
+
+  console.log("ordered: " + ordered)
+
+  return ordered
+}
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -115,22 +148,27 @@ const Report = (props) => {
 }
 
 const CollectCowsReport = () => {
-  var data = [
-    cowData,
-    cowData2,
-    cowData,
-    cowData2,
-    cowData,
-    cowData2,
-    cowData,
-    cowData2,
-    cowData,
-    cowData2,
-    cowData,
-    cowData2,
-    cowData,
-    cowData2
-  ]
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("https://xlink-worker.jcdeichmann.workers.dev/collect-cows")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          var dd = prioritizeData(result)
+      
+          setData(dd);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          console.log("error happened....")
+        }
+      )
+  }, [])
+  
   return (
    <Report reportName="Collect Cows" data={data}></Report>
   )
