@@ -136,12 +136,14 @@ const Report = (props) => {
   
     return (
       <React.Fragment>
+        <Box bgcolor="white" width="100vw" height="100vh">
         <NavBar button={BackButton}></NavBar>
         <Box bgcolor="white">
           <Box p={2}>
             <Typography variant="h4">{props.reportName}</Typography>
           </Box>
           {props.data.map(row => <AccordianCowCard data={row}></AccordianCowCard>)}
+        </Box>
         </Box>
       </React.Fragment>
     )
