@@ -143,15 +143,16 @@ const Report = (props) => {
         <NavBar button={BackButton}></NavBar>
         <Pullable onRefresh={props.refreshReport}>
         <Box bgcolor="white">
-          <Box p={0.5}>
-          <Typography variant="body2" style={{ fontSize: 13 }} color="textSecondary" align="center">Last refresh: {props.refreshTime}</Typography>
-          </Box>
-          <Box p={2} pt={0}>
+  
+          <Box p={2}>
           
             <Typography variant="h4">{props.reportName}</Typography>
           </Box>
           {props.data.map(row => props.isLoading ? <SkeletonCowCard></SkeletonCowCard> : <AccordianCowCard data={row}></AccordianCowCard>)}
         </Box>
+        <Box p={2}>
+          <Typography variant="body2" style={{ fontSize: 13 }} color="textSecondary" align="center">Data last fetched: {props.refreshTime}</Typography>
+          </Box>
         </Pullable>
         </Box>
       </React.Fragment>
