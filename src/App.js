@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import { Skeleton } from "@material-ui/lab";
 import Pullable from 'react-pullable'
+import moment from "moment";
 
 const useStyles = makeStyles({
   root: {
@@ -142,13 +143,14 @@ const Report = (props) => {
         <NavBar button={BackButton}></NavBar>
         <Pullable onRefresh={props.refreshReport}>
         <Box bgcolor="white">
-          <Box p={2}>
+          <Box p={0.5}>
+          <Typography variant="body2" style={{ fontSize: 13 }} color="textSecondary" align="center">Last refresh: {props.refreshTime}</Typography>
+          </Box>
+          <Box p={2} pt={0}>
+          
             <Typography variant="h4">{props.reportName}</Typography>
           </Box>
           {props.data.map(row => props.isLoading ? <SkeletonCowCard></SkeletonCowCard> : <AccordianCowCard data={row}></AccordianCowCard>)}
-          <Box>
-          <Typography>Last refresh: 10:21pm</Typography>
-          </Box>
         </Box>
         </Pullable>
         </Box>
@@ -180,6 +182,7 @@ const CollectCowsReport = () => {
 
   const [data, setData] = useState([null, null, null, null, null, null, null]);
   const [isLoading, setLoading] = useState(true);
+  const [time, setTime] = useState("never")
 
   var fetchNewData = () => {
     setLoading(true)
@@ -191,6 +194,8 @@ const CollectCowsReport = () => {
           var dd = prioritizeData(result)
           setData(dd);
           setLoading(false)
+          setTime(moment().format('h:mm a'))
+
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -206,7 +211,7 @@ const CollectCowsReport = () => {
   }, [])
   
   return (
-   <Report reportName="Collect Cows" data={data} refreshReport={fetchNewData} isLoading = {isLoading}></Report>
+   <Report reportName="Collect Cows" data={data} refreshTime={time} refreshReport={fetchNewData} isLoading = {isLoading}></Report>
   )
 }
 
