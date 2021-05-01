@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { createMuiTheme, AppBar, Box, CardActionArea, Divider, TextField, Toolbar, ThemeProvider, Icon, IconButton, CssBaseline, List, ListItem, ListItemText } from "@material-ui/core";
+import { createMuiTheme, AppBar, Box, CardActionArea, Divider, TextField, Toolbar, ThemeProvider, Icon, IconButton, CssBaseline, List, ListItem, ListItemText, Accordion, AccordionSummary, Grid } from "@material-ui/core";
 import { ArrowBackIos } from "@material-ui/icons";
 import { AccordianCowCard } from "./components/AccordianCowCard";
 import {
@@ -11,6 +11,7 @@ import {
   Link,
   HashRouter
 } from "react-router-dom";
+import { Skeleton } from "@material-ui/lab";
 
 const useStyles = makeStyles({
   root: {
@@ -142,16 +143,37 @@ const Report = (props) => {
           <Box p={2}>
             <Typography variant="h4">{props.reportName}</Typography>
           </Box>
-          {props.data.map(row => <AccordianCowCard data={row}></AccordianCowCard>)}
+          {props.data.map(row => props.isLoading ? <SkeletonCowCard></SkeletonCowCard> : <AccordianCowCard data={row}></AccordianCowCard>)}
         </Box>
         </Box>
       </React.Fragment>
     )
 }
 
+const SkeletonCowCard = () => {
+  return (
+  <Accordion>
+      <AccordionSummary
+        aria-controls="panel1bh-content"
+        id="panel1bh-header"
+      >
+        <Grid container justify="space-around" spacing={1}>
+          <Grid item xs={2}>
+          <Skeleton variant="circle" width={40} height={40} />
+          </Grid>
+          <Grid item xs={10}>
+          <Skeleton variant="text" animation="wave" />
+          <Skeleton variant="text" animation="wave"/>
+          </Grid>
+        </Grid>
+      </AccordionSummary>
+    </Accordion>)
+}
+
 const CollectCowsReport = () => {
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([null, null, null, null, null, null, null]);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://xlink-worker.jcdeichmann.workers.dev/collect-cows")
@@ -161,6 +183,7 @@ const CollectCowsReport = () => {
           var dd = prioritizeData(result)
       
           setData(dd);
+          setLoading(false)
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -172,7 +195,7 @@ const CollectCowsReport = () => {
   }, [])
   
   return (
-   <Report reportName="Collect Cows" data={data}></Report>
+   <Report reportName="Collect Cows" data={data} isLoading = {isLoading}></Report>
   )
 }
 
