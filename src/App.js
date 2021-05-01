@@ -12,6 +12,7 @@ import {
   HashRouter
 } from "react-router-dom";
 import { Skeleton } from "@material-ui/lab";
+import Pullable from 'react-pullable'
 
 const useStyles = makeStyles({
   root: {
@@ -139,12 +140,17 @@ const Report = (props) => {
       <React.Fragment>
         <Box bgcolor="white" width="100vw" height="100vh">
         <NavBar button={BackButton}></NavBar>
+        <Pullable onRefresh={props.refreshReport}>
         <Box bgcolor="white">
           <Box p={2}>
             <Typography variant="h4">{props.reportName}</Typography>
           </Box>
           {props.data.map(row => props.isLoading ? <SkeletonCowCard></SkeletonCowCard> : <AccordianCowCard data={row}></AccordianCowCard>)}
+          <Box>
+          <Typography>Last refresh: 10:21pm</Typography>
+          </Box>
         </Box>
+        </Pullable>
         </Box>
       </React.Fragment>
     )
@@ -175,13 +181,14 @@ const CollectCowsReport = () => {
   const [data, setData] = useState([null, null, null, null, null, null, null]);
   const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
+  var fetchNewData = () => {
+    setLoading(true)
     fetch("https://xlink-worker.jcdeichmann.workers.dev/collect-cows")
       .then(res => res.json())
       .then(
-        (result) => {
+        async (result) => {
+          await new Promise(r => setTimeout(r, 300));
           var dd = prioritizeData(result)
-      
           setData(dd);
           setLoading(false)
         },
@@ -192,10 +199,14 @@ const CollectCowsReport = () => {
           console.log("error happened....")
         }
       )
+  }
+
+  useEffect(() => {
+    fetchNewData()
   }, [])
   
   return (
-   <Report reportName="Collect Cows" data={data} isLoading = {isLoading}></Report>
+   <Report reportName="Collect Cows" data={data} refreshReport={fetchNewData} isLoading = {isLoading}></Report>
   )
 }
 
