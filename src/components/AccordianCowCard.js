@@ -31,7 +31,7 @@ export var AccordianCowCard = (props) => {
         id="panel1bh-header"
       >
         <Grid container justify="space-around" spacing={1}>
-          <Grid item>
+          <Grid item xs={2}>
             <Chip color="primary" label={props.data[mainItem]}></Chip>
           </Grid>
 
