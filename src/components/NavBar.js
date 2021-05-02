@@ -13,7 +13,7 @@ export const NavBar = (props) => {
         zIndex: "10",
         backgroundColor: "#c30a13"
       }}></Box>
-      <AppBar position="sticky" style={{ clipPath: "inset(0px -10px -10px -10px)" }}>
+      <AppBar position="absolute" style={{ clipPath: "inset(0px -10px -10px -10px)" }}>
         <Toolbar>
           {props.button}
           <Typography variant="h6">Xlink Mobile</Typography>

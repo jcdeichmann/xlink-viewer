@@ -7,7 +7,7 @@ import {
   HashRouter
 } from "react-router-dom";
 import { Home } from "./components/Home";
-import { CollectCowsReport } from "./components/CollectCowsReport";
+import { CollectCowsReport, CowsDueReport } from "./components/Reports";
 
 
 const theme = createMuiTheme({ 
@@ -33,6 +33,9 @@ export default function App() {
         <Switch>
           <Route path="/collect-cows/">
             <CollectCowsReport></CollectCowsReport>
+          </Route>
+          <Route path="/cows-due/">
+            <CowsDueReport></CowsDueReport>
           </Route>
           <Route path="/">
             <Home></Home>

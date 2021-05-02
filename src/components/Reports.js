@@ -2,17 +2,28 @@ import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { Report } from "./Report";
 import { prioritizeData } from "../lib/prioritizeData";
+import { fetchCollectCows, fetchCowsDue } from "../lib/xlinkClient";
 
-export const CollectCowsReport = () => {
+export const CollectCowsReport = (props) => {
 
+  return (<ReportWithData reportName="Collect Cows" fetchData={fetchCollectCows}></ReportWithData>)
+};
+
+export const CowsDueReport = (props) => {
+
+  return (<ReportWithData reportName="Cows Due" fetchData={fetchCowsDue}></ReportWithData>)
+};
+
+
+const ReportWithData = (props) => {
+  
   const [data, setData] = useState([null, null, null, null, null, null, null]);
   const [isLoading, setLoading] = useState(true);
   const [time, setTime] = useState("never");
 
   var fetchNewData = () => {
     setLoading(true);
-    fetch("https://xlink-worker.jcdeichmann.workers.dev/collect-cows")
-      .then(res => res.json())
+    props.fetchData()
       .then(
         async (result) => {
           await new Promise(r => setTimeout(r, 300));
@@ -36,6 +47,6 @@ export const CollectCowsReport = () => {
   }, []);
 
   return (
-    <Report reportName="Collect Cows" data={data} refreshTime={time} refreshReport={fetchNewData} isLoading={isLoading}></Report>
+    <Report reportName={props.reportName} data={data} refreshTime={time} refreshReport={fetchNewData} isLoading={isLoading}></Report>
   );
-};
+}

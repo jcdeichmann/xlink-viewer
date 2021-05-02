@@ -15,8 +15,8 @@ export const Home = () => {
           <ListItem divider button component="a" href="#/collect-cows">
             <ListItemText primary="Collect Cows"></ListItemText>
           </ListItem>
-          <ListItem divider button component="a" href="#/collect-cows">
-            <ListItemText primary="Health List"></ListItemText>
+          <ListItem divider button component="a" href="#/cows-due">
+            <ListItemText primary="Cows Due"></ListItemText>
           </ListItem>
         </List>
       </Box>
