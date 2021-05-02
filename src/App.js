@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { createMuiTheme, AppBar, Box, CardActionArea, Divider, TextField, Toolbar, ThemeProvider, Icon, IconButton, CssBaseline, List, ListItem, ListItemText, Accordion, AccordionSummary, Grid } from "@material-ui/core";
+import { createMuiTheme, Box, CardActionArea, Divider, TextField, ThemeProvider, Icon, IconButton, CssBaseline, Accordion, AccordionSummary, Grid } from "@material-ui/core";
 import { ArrowBackIos } from "@material-ui/icons";
 import { AccordianCowCard } from "./components/AccordianCowCard";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   HashRouter
 } from "react-router-dom";
 import { Skeleton } from "@material-ui/lab";
 import Pullable from 'react-pullable'
 import moment from "moment";
+import { Home } from "./components/Home";
+import { NavBar } from "./components/NavBar";
 
 
 function prioritizeData(datas) {
@@ -63,27 +63,6 @@ const theme = createMuiTheme({
     }
   }
 });
-
-const NavBar = (props) => {
-  return (
-    <React.Fragment>
-      <Box className="testing" style={{
-        position: "fixed",
-        width: "100%",
-        height: "300px",
-        top: "-250px",
-        zIndex: "10",
-        backgroundColor: "#c30a13"
-      }} ></Box>
-      <AppBar position="sticky" style={{ clipPath: "inset(0px -10px -10px -10px)" }}>
-        <Toolbar>
-          {props.button}
-          <Typography variant="h6">Xlink Mobile</Typography>
-        </Toolbar>
-      </AppBar>
-    </React.Fragment>
-  )
-}
 
 const Report = (props) => {
   const BackButton = (
@@ -168,27 +147,6 @@ const CollectCowsReport = () => {
   return (
    <Report reportName="Collect Cows" data={data} refreshTime={time} refreshReport={fetchNewData} isLoading = {isLoading}></Report>
   )
-}
-
-const Home = () => {
-  return (
-    <React.Fragment>
-      <Box bgcolor="white" width="100vw" height="100vh">
-      <NavBar></NavBar>
-      <Box p={2}>
-          <Typography variant="h4" >Report Lists</Typography>
-        </Box>
-        <List>
-          <ListItem divider button component="a" href="#/collect-cows">
-            <ListItemText primary="Collect Cows"></ListItemText>
-          </ListItem>
-          <ListItem divider button component="a" href="#/collect-cows">
-            <ListItemText primary="Health List"></ListItemText>
-          </ListItem>
-        </List>
-      </Box>
-
-    </React.Fragment>)
 }
 
 export default function App() {
