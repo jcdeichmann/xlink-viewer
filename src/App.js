@@ -15,52 +15,6 @@ import { Skeleton } from "@material-ui/lab";
 import Pullable from 'react-pullable'
 import moment from "moment";
 
-const useStyles = makeStyles({
-  root: {
-    minWidth: 275
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)"
-  },
-  title: {
-    fontSize: 14
-  },
-  pos: {
-    marginBottom: 12
-  }
-});
-
-var cowData = {
-  "Animal Number": "118",
-  "Robot": "101",
-  "Lactation No": "2",
-  "Lactation Days": "228",
-  "Interval Exceeded": "197.2",
-  "Away": "21:20",
-  "Milk Yield Expected": "20.4",
-  "Lactation No2": "2",
-  "Lactation Days2": "228",
-  "Interval Exceeded2": "197.2",
-  "Away2": "21:20",
-  "Milk Yield Expected2": "20.4"
-}
-
-var cowData2 = {
-  "Animal Number": "24",
-  "Robot": "101",
-  "Lactation No": "2",
-  "Lactation Days": "34",
-  "Interval Exceeded": "17.2",
-  "Away": "8:20",
-  "Milk Yield Expected": "20.4",
-  "Lactation No2": "2",
-  "Lactation Days2": "228",
-  "Interval Exceeded2": "197.2",
-  "Away2": "21:20",
-  "Milk Yield Expected2": "20.4"
-}
 
 function prioritizeData(datas) {
   console.log("datas: " + datas)
