@@ -15,7 +15,10 @@ export const Report = (props) => {
 
   return (
     <React.Fragment>
-      <Box bgcolor="white" width="100vw" height="100vh">
+      <Box bgcolor="white" width="100vw" height="100vh" style={{
+        position: "fixed",
+        zIndex: "-1",
+      }}></Box>
         <NavBar button={BackButton}></NavBar>
         <Pullable onRefresh={props.refreshReport}>
           <Box bgcolor="white">
@@ -31,7 +34,7 @@ export const Report = (props) => {
           </Box>
     
         </Pullable>
-      </Box>
+      
     </React.Fragment>
   );
 };

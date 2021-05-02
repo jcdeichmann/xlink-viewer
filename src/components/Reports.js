@@ -5,13 +5,13 @@ import { prioritizeData } from "../lib/prioritizeData";
 import { fetchCollectCows, fetchCowsDue } from "../lib/xlinkClient";
 
 export const CollectCowsReport = (props) => {
-
-  return (<ReportWithData reportName="Collect Cows" fetchData={fetchCollectCows}></ReportWithData>)
+  const priorityFields = ["Animal Number", "Away", "Robot", "Interval Exceed"]
+  return (<ReportWithData reportName="Collect Cows" fetchData={fetchCollectCows} priorityFields={priorityFields}></ReportWithData>)
 };
 
 export const CowsDueReport = (props) => {
-
-  return (<ReportWithData reportName="Cows Due" fetchData={fetchCowsDue}></ReportWithData>)
+  const priorityFields = ["Animal Number", "Animal Name", "Expected Calving Date"]
+  return (<ReportWithData reportName="Cows Due" fetchData={fetchCowsDue} priorityFields={priorityFields}></ReportWithData>)
 };
 
 
@@ -27,7 +27,7 @@ const ReportWithData = (props) => {
       .then(
         async (result) => {
           await new Promise(r => setTimeout(r, 300));
-          var dd = prioritizeData(result);
+          var dd = prioritizeData(result, props.priorityFields);
           setData(dd);
           setLoading(false);
           setTime(moment().format('h:mm a'));

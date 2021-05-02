@@ -1,12 +1,11 @@
 
 
-export function prioritizeData(datas) {
+export function prioritizeData(datas, priorityFields = []) {
   console.log("datas: " + datas);
-  var priorityKeys = ["Animal Number", "Away", "Robot", "Interval Exceed"];
 
   var sort = (x, y) => {
-    var xInd = priorityKeys.indexOf(x);
-    var yInd = priorityKeys.indexOf(y);
+    var xInd = priorityFields.indexOf(x);
+    var yInd = priorityFields.indexOf(y);
 
     xInd = xInd == -1 ? 1000 : xInd;
     yInd = yInd == -1 ? 1000 : yInd;

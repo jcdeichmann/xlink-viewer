@@ -6,7 +6,10 @@ import { NavBar } from "./NavBar";
 export const Home = () => {
   return (
     <React.Fragment>
-      <Box bgcolor="white" width="100vw" height="100vh">
+      <Box bgcolor="white" width="100vw" height="100vh" style={{
+        position: "fixed",
+        zIndex: "-1",
+      }}></Box>
         <NavBar></NavBar>
         <Box p={2}>
           <Typography variant="h4">Report Lists</Typography>
@@ -19,7 +22,7 @@ export const Home = () => {
             <ListItemText primary="Cows Due"></ListItemText>
           </ListItem>
         </List>
-      </Box>
+      
 
     </React.Fragment>);
 };
