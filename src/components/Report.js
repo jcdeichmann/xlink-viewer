@@ -25,7 +25,7 @@ export const Report = (props) => {
 
             <Box p={2}>
 
-              <Typography variant="h4">{props.reportName}</Typography>
+              <Typography variant="h4">{props.reportName + (props.isLoading ? "" : " - " + props.data.length)}</Typography>
             </Box>
             {props.data.map(row => props.isLoading ? <SkeletonCowCard></SkeletonCowCard> : <AccordianCowCard data={row}></AccordianCowCard>)}
             <Box p={2}>
