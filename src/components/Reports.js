@@ -5,7 +5,7 @@ import { prioritizeData } from "../lib/prioritizeData";
 import { fetchCollectCows, fetchCowsDue } from "../lib/xlinkClient";
 
 export const CollectCowsReport = (props) => {
-  const priorityFields = ["Animal Number", "Away", "Robot", "Interval Exceed"]
+  const priorityFields = ["Animal Number", "Away", "Day Production", "Lactation days"]
   return (<ReportWithData reportName="Collect Cows" fetchData={fetchCollectCows} priorityFields={priorityFields}></ReportWithData>)
 };
 
