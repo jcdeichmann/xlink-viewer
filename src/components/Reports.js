@@ -12,7 +12,7 @@ export const CollectCowsReport = (props) => {
 export const CowsDueReport = (props) => {
   const priorityFields = ["Animal Number", "Animal Name", "Expected Calving Date"]
   var dataToPrependd = [
-    {"Animal Number": "12", "Animal Name": "Brittany L", "Expected Calving Date": "2/24/23", "Age": "30", "Animal Life No.": "", "Lactation No.": "3"}
+    {"Animal Number": "12", "Animal Name": "Brittany L", "Expected Calving Date": "2/24/23", "Age": "30", "Animal Life No.": "", "Lactation No.": "3", "What?": "Yes, you're pregnant!"}
   ]
   return (<ReportWithData reportName="Cows Due" fetchData={fetchCowsDue} priorityFields={priorityFields} dataToPrepend={dataToPrependd}></ReportWithData>)
 };
