@@ -12,7 +12,7 @@ export const CollectCowsReport = (props) => {
 export const CowsDueReport = (props) => {
   const priorityFields = ["Animal Number", "Animal Name", "Expected Calving Date"]
   var dataToPrependd = [
-    {"Animal Number": "12", "Animal Name": "Brittney L", "Expected Calving Date": "2/24/23", "Age": "30", "Animal Life No.": "", "Lactation No.": "3", "What?": "Yes, you're pregnant!"}
+    {"Animal Number": "12", "Animal Name": "Brittany L", "Expected Calving Date": "2/24/23", "Age": "30", "Animal Life No.": "", "Lactation No.": "3", "What?": "Yes, you're pregnant!"}
   ]
   return (<ReportWithData reportName="Cows Due" fetchData={fetchCowsDue} priorityFields={priorityFields} dataToPrepend={dataToPrependd}></ReportWithData>)
 };
@@ -34,7 +34,7 @@ const ReportWithData = (props) => {
           console.log("here")
           if (props.dataToPrepend) {
             console.log(props.dataToPrepend)
-            dd = dd.slice(0, 3).concat(props.dataToPrepend).concat(dd.slice(3))
+            dd = props.dataToPrepend.concat(dd)
           }
           setData(dd);
           setLoading(false);
