@@ -11,10 +11,7 @@ export const CollectCowsReport = (props) => {
 
 export const CowsDueReport = (props) => {
   const priorityFields = ["Animal Number", "Animal Name", "Expected Calving Date"]
-  var dataToPrependd = [
-    {"Animal Number": "12", "Animal Name": "Brittany L", "Expected Calving Date": "2/24/23", "Age": "30", "Animal Life No.": "", "Lactation No.": "3"}
-  ]
-  return (<ReportWithData reportName="Cows Due" fetchData={fetchCowsDue} priorityFields={priorityFields} dataToPrepend={dataToPrependd}></ReportWithData>)
+  return (<ReportWithData reportName="Cows Due" fetchData={fetchCowsDue} priorityFields={priorityFields}></ReportWithData>)
 };
 
 
@@ -31,11 +28,6 @@ const ReportWithData = (props) => {
         async (result) => {
           await new Promise(r => setTimeout(r, 300));
           var dd = prioritizeData(result, props.priorityFields);
-          console.log("here")
-          if (props.dataToPrepend) {
-            console.log(props.dataToPrepend)
-            dd = props.dataToPrepend.concat(dd)
-          }
           setData(dd);
           setLoading(false);
           setTime(moment().format('h:mm a'));
